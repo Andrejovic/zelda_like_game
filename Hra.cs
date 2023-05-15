@@ -43,7 +43,7 @@ namespace CSHra
                 case StisknutaSipka.doleva:
                     nove_x--;
 
-                    if (mapa.JeBalvan(nove_x, nove_y))
+                    if (mapa.JeBalvan(nove_x, nove_y) && mapa.JeVolno(nove_x-1, nove_y))
                     {
                         mapa.Presun(nove_x, nove_y, nove_x-1, nove_y);
                     }
@@ -56,7 +56,7 @@ namespace CSHra
                 case StisknutaSipka.doprava:
                     nove_x++;
 
-                    if (mapa.JeBalvan(nove_x, nove_y))
+                    if (mapa.JeBalvan(nove_x, nove_y) && mapa.JeVolno(nove_x+1, nove_y))
                     {
                         mapa.Presun(nove_x, nove_y, nove_x+1, nove_y);
                     }
@@ -112,8 +112,16 @@ namespace CSHra
         {
             if (mapa.JeVolno( this.x, this.y+1 ))
             {
+                if (mapa.JeHrdina(this.x, this.y + 2) && mapa.JeVolno(this.x, this.y + 1))
+                {
+                    mapa.stav = Stav.prohra;
+                }
                 mapa.Presun(this.x, this.y, this.x, this.y+1 ); // presune obsah mapy a pokud je tam pohybliny prvek, zmeni mu x a y
+                
+                
             }
+
+            
             // ###########################################################
             // ...tady neco schazi...
             // ###########################################################
@@ -216,6 +224,11 @@ namespace CSHra
         public bool JeVolno(int x, int y)
         {
             return (plan[x, y] == ' ');
+        }
+
+        public bool JeHrdina(int x, int y)
+        {
+            return (plan[x, y] == 'H');
         }
 
         public bool JeVolnoNeboHlina(int x, int y)
