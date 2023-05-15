@@ -42,6 +42,11 @@ namespace CSHra
                     break;
                 case StisknutaSipka.doleva:
                     nove_x--;
+
+                    if (mapa.JeBalvan(nove_x, nove_y))
+                    {
+                        mapa.Presun(nove_x, nove_y, nove_x-1, nove_y);
+                    }
                     // ...tady neco schazi...
                     break;
                 case StisknutaSipka.nahoru:
@@ -50,6 +55,11 @@ namespace CSHra
                     break;
                 case StisknutaSipka.doprava:
                     nove_x++;
+
+                    if (mapa.JeBalvan(nove_x, nove_y))
+                    {
+                        mapa.Presun(nove_x, nove_y, nove_x+1, nove_y);
+                    }
                     // ...tady neco schazi...
                     break;
                 case StisknutaSipka.dolu:
@@ -65,6 +75,8 @@ namespace CSHra
             {
                 mapa.Presun(x, y, nove_x, nove_y); // presune obsah mapy a pokud je tam pohybliny prvek, zmeni mu x a y
             }
+
+            
         }
     }
 
