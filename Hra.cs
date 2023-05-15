@@ -98,7 +98,10 @@ namespace CSHra
         }
         public override void UdelejKrok()
         {
-            mapa.JeVolno( kdex, kdey-- );
+            if (mapa.JeVolno( this.x, this.y+1 ))
+            {
+                mapa.Presun(this.x, this.y, this.x, this.y+1 ); // presune obsah mapy a pokud je tam pohybliny prvek, zmeni mu x a y
+            }
             // ###########################################################
             // ...tady neco schazi...
             // ###########################################################
