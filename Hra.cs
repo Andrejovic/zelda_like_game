@@ -41,15 +41,19 @@ namespace CSHra
                 case StisknutaSipka.zadna:
                     break;
                 case StisknutaSipka.doleva:
+                    nove_x--;
                     // ...tady neco schazi...
                     break;
                 case StisknutaSipka.nahoru:
+                    nove_y--;
                     // ...tady neco schazi...
                     break;
                 case StisknutaSipka.doprava:
+                    nove_x++;
                     // ...tady neco schazi...
                     break;
                 case StisknutaSipka.dolu:
+                    nove_y++;
                     // ...tady neco schazi...
                     break;
                 default:
@@ -94,6 +98,7 @@ namespace CSHra
         }
         public override void UdelejKrok()
         {
+            mapa.JeVolno( kdex, kdey-- );
             // ###########################################################
             // ...tady neco schazi...
             // ###########################################################
